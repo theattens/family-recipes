@@ -1,0 +1,38 @@
+<html>
+<head>
+    <script type="text/javascript">
+        function onStart() {
+            sessionStorage.setItem("list", "undefined");
+        }
+
+        function clickCounter(x) {
+            if(typeof(Storage) !== "undefined") {
+                if (sessionStorage.list === "undefined") {
+                    sessionStorage.setItem("list", document.getElementById("input").value);
+                    document.getElementById("result").innerHTML = "Your list is " + sessionStorage.list + ".";
+                } else if (sessionStorage.list !== "undefined") {
+                sessionStorage.setItem("list", sessionStorage.list + ", " + document.getElementById("input").value);
+                document.getElementById("result").innerHTML = "Your list is " + sessionStorage.list + ".";
+            } else {
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+            }
+        }
+    }
+    </script>
+</head>
+<body onload="onStart()">
+    <input type="text" id="input" placeholder="Enter Word">
+    <button type="submit" onclick="clickCounter(this)">Click Me!</button>
+    <p id="result"></p>
+    <a href="index.html">Home</a>
+</body>
+</html>
+<!--
+if(typeof(Storage) !== "undefined") {
+                sessionStorage.setItem("entry", document.getElementById("input").value);
+                document.getElementById("result").innerHTML = "You have entered " + sessionStorage.entry + ".";
+            } else {
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+            }
+        }
+-->

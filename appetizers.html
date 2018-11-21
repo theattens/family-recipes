@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <html>
 <head>
 	<title>Appetizers</title>
@@ -219,3 +220,226 @@
 	}
 </script>
 </html>
+=======
+<html>
+<head>
+	<title>Appetizers</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<style type="text/css">
+	.sidenav {
+		font-family: 'Josefin Sans', sans-serif;
+		font-size: 18.8px;
+		text-align: center;
+		position: absolute;
+		top: 46.8px;
+		width: 15%;
+		height: 100%;
+		padding: 0;
+		margin: 0;
+		background-color: #f9f9f9;
+	}
+	.side-list {
+		padding: 0;
+		list-style-type: none;
+		text-decoration: none;
+	}
+	.side-list-item {
+		padding: 8px 0 8px 0;
+		text-decoration: none;
+	}
+	.side-list-item:hover {
+		transition: 0.3s;
+		color: #6699ff;
+		cursor: pointer;
+	}
+	.active {
+		color: #6699ff;
+	}
+	.main-content {
+		font-family: 'Josefin Sans', sans-serif;
+		font-size: 18.8px;
+		position: absolute;
+		left: 15%;
+		top: 46.8px;
+		padding: 0;
+	}
+	.recipe-insert {
+		display: block;
+		text-decoration: none;
+		color: black;
+	}
+	.recipe-image {
+		height: 150px;
+		width: 150px;
+	}
+	.recipe-name {
+		position: relative;
+		top: -100px;
+		left: 200px;
+	}
+	@media screen and (max-width: 1100px) {
+		.sidenav {
+			top: 46.8px;
+			width: 100%;
+			height: auto;
+			font-family: 'Josefin Sans', sans-serif;
+			font-size: 18.8px;
+			text-align: center;
+			position: absolute;
+			padding: 0;
+			margin: 0;
+			background-color: #f9f9f9;
+		}
+		.main-content {
+			position: absolute;
+			left: 5%;
+			top: 328.9px;
+			font-family: 'Josefin Sans', sans-serif;
+			font-size: 18.8px;
+			padding: 0;
+		}
+		.sidenav-lowered {
+			top: 327.6px;
+			width: 100%;
+			height: auto;
+			font-family: 'Josefin Sans', sans-serif;
+			font-size: 18.8px;
+			text-align: center;
+			position: absolute;
+			padding: 0;
+			margin: 0;
+			background-color: #f9f9f9;
+		}
+		.main-content-lowered {
+			font-family: 'Josefin Sans', sans-serif;
+			font-size: 18.8px;
+			position: absolute;
+			left: 5%;
+			top: 656.5px;
+			padding: 0;
+		}
+	}
+	</style>
+</head>
+
+<body class="body" onload="showRecipes(active)">
+	<!-- Menu Icon -->
+	<div class="menuIconContainer" onclick="displayMenu()">
+		<div class="bar1"></div>
+		<div class="bar2"></div>
+		<div class="bar3"></div>
+	</div>
+	<!-- Navigation Bar -->
+	<div class="navbar">
+		<ul class="list">
+			<li id="homepage"><a href="index.html">Home</a></li>
+			<li><a href="entrees.html">Entrees</a></li>
+			<li><a href="appetizers.html" class="active">Appetizers</a></li>
+			<li><a href="desserts.html" class="dropbtn">Desserts</a></li>
+			<li><a href="salads.html" class="dropbtn">Salads, Soups & Sides</a></li>
+			<li><a href="drinks.html">Drinks</a></li>
+			<li><a href="fam_favs.html">Family Favorites</a></li>
+			<li class="search">
+				<input type="text" placeholder="Search">
+				<button type="submit"><i class="fa fa-search"></i></button>
+			</li>
+		</ul>
+	</div>
+	<div class="smallscreenactive" id="smallscreenactive">
+		<a href="index.html" class="active">Appetizers</a>
+	</div>
+	<div class="smallscreennav" id="smallscreennav">
+		<ul class="list">
+			<li id="homepage"><a href="index.html">Home</a></li>
+			<li><a href="entrees.html">Entrees</a></li>
+			<li><a href="appetizers.html" class="active">Appetizers</a></li>
+			<li><a href="desserts.html">Desserts</a></li>
+			<li><a href="salads.html">Salads, Soups & Sides</a></li>
+			<li><a href="drinks.html">Drinks</a></li>
+			<li><a href="fam_favs.html">Family Favorites</a></li>
+		</ul>
+	</div>
+	<!-- Page Body -->
+	<div class="sidenav" id="sidenav">
+		<ul class="side-list">
+			<li class="side-list-item active" onclick="updateListing(this)" id="active-recipe">Appetizers</li>
+		</ul>
+	</div>
+	<div class="main-content" id="main-content">
+		<div id="recipe-info">
+		</div>
+	</div>
+</body>
+
+<script>
+	//arrays :(
+	var appetizers = ["Artichoke Spinach Dip.png", "Caviar Supreme.png", "Cheesy Artichoke Heart Appetizers.pdf", "Cheesy Artichoke Hearts.jpg", "Dill Dip.png", "Mushroom Filo Tarts.png", "Queso.jpg", "Salmon Mousse.png", "Sara's Cheese Spread Appetizer.jpg", "Shrimp Cocktail Dip.pdf", "Shrimp Spread.jpg", "Smoked Whitefish Dip with Dill and Caper Relish.jpg", "Super Scallop Starters.jpg"];
+	var string_options =["appetizers"]
+	var options = [appetizers];
+
+	//set default active array
+	var active = "appetizers";
+
+	function updateListing(x) {
+		active = x.innerText.toLowerCase();
+		document.getElementById("active-recipe").classList.remove("active");
+		document.getElementById("active-recipe").removeAttribute("id");
+		x.setAttribute("id", "active-recipe");
+		document.getElementById("active-recipe").classList.add("active");
+		showRecipes(active);
+	}
+
+	function showRecipes(input) {
+		for (var j = 0; j < string_options.length; j++) {
+			if (input == string_options[j]) {
+				folder = input;
+				input = options[j];
+			}
+		}
+
+		document.getElementById("recipe-info").innerHTML = "";
+		for (var i = 0; i < input.length; i++) {
+			var source = ".\\Recipes\\Appetizers\\" + input[i];
+			document.getElementById("recipe-info").innerHTML += "<a href='" + source + "' target='_blank' class='recipe-insert'>" +
+			"<img src='" + source + "' class='recipe-image'>" +
+			"<p class='recipe-name'>" + input[i].substring(0, input[i].length - 4) + "</p>"
+			+ "</a>";
+		}
+	}
+
+	function displayMenu() {
+		var x = document.getElementById("smallscreennav");
+	    if (x.style.display === "block") {
+	        x.style.display = "none";
+	        document.getElementById("sidenav").classList.remove("sidenav");
+	        document.getElementById("sidenav").classList.add("sidenav-lowered");
+	        document.getElementById("main-content").classList.remove("main-content");
+	        document.getElementById("main-content").classList.add("main-content-lowered");
+	    } else {
+	        x.style.display = "block";
+	        document.getElementById("sidenav").classList.remove("sidenav-lowered");
+	        document.getElementById("sidenav").classList.add("sidenav");
+	        document.getElementById("main-content").classList.remove("main-content-lowered");
+	        document.getElementById("main-content").classList.add("main-content");
+	       
+	    }
+	    
+	    var y = document.getElementById("smallscreenactive")
+	   	if (y.style.display === "none") {
+	    	y.style.display = "block";
+			document.getElementById("sidenav").classList.remove("sidenav-lowered");
+	        document.getElementById("sidenav").classList.add("sidenav");
+	        document.getElementById("main-content").classList.remove("main-content-lowered");
+	        document.getElementById("main-content").classList.add("main-content");	    } else {
+	    	y.style.display = "none";
+	    	document.getElementById("sidenav").classList.remove("sidenav");
+	        document.getElementById("sidenav").classList.add("sidenav-lowered");
+	        document.getElementById("main-content").classList.remove("main-content");
+	        document.getElementById("main-content").classList.add("main-content-lowered");
+	    }
+	}
+</script>
+</html>
+>>>>>>> d179a4af76df7f9973120646ffc249e4a3a741d2

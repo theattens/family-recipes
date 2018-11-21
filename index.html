@@ -1,0 +1,158 @@
+<html>
+<head>
+	<title>Home Page</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Bad+Script" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<style type="text/css">
+		#title {
+			width: 100%;
+			text-align: center;
+			font-family: 'Bad Script', cursive;
+			font-weight: 300;
+			font-size: 40px;
+			padding: 15px 0px;
+		}
+		.container {
+			position: relative;
+			display: inline-block;
+			width: 33%;
+		}
+		@media screen and (max-width: 1100px) {
+			.container {
+				width: 49%;
+			}
+			.container .overlay {
+				opacity: 1;
+			}
+		}
+		@media screen and (max-width: 600px) {
+			.container {
+				width: 100%;
+			}
+			.container .overlay {
+				opacity: 1;
+			}
+		}
+		.overlay {
+			position: absolute;
+			font-family: 'Josefin Sans', sans-serif;
+			font-weight: 300;
+			width: 100%;
+			height: 25%;
+			bottom: 0;
+			background-color: rgba(0, 0, 0, 0.5);
+			transition: 0.5s ease;
+			color: white;
+			font-size: 27px;
+			padding-top: 8%;
+			text-align: center;
+			opacity: 0;
+		}
+		.container:hover .overlay {
+			opacity: 1;
+		}
+		.images {
+			width: 120%;
+			top: 10vh;
+			height: 268px;
+		}
+		.linkimage {
+			margin: 0;
+			padding: 0px;
+			width: 100%;
+			height: 268px;
+		}
+
+
+	</style>
+</head>
+
+<body class="body">
+	<!-- Menu Icon -->
+	<div class="menuIconContainer" onclick="displayMenu()">
+		<div class="bar1"></div>
+		<div class="bar2"></div>
+		<div class="bar3"></div>
+	</div>
+	<!-- Navigation Bar -->
+	<div class="navbar">
+		<ul class="list">
+			<li id="homepage"><a href="index.html" class="active">Home</a></li>
+			<li><a href="entrees.html">Entrees</a></li>
+			<li><a href="appetizers.html">Appetizers</a></li>
+			<li><a href="desserts.html" class="dropbtn">Desserts</a></li>
+			<li><a href="salads.html" class="dropbtn">Salads, Soups & Sides</a></li>
+			<li><a href="drinks.html">Drinks</a></li>
+			<li><a href="fam_favs.html">Family Favorites</a></li>
+			<li class="search">
+				<input type="text" placeholder="Search">
+				<button type="submit"><i class="fa fa-search"></i></button>
+			</li>
+		</ul>
+	</div>
+	<div class="smallscreenactive" id="smallscreenactive">
+		<a href="index.html" class="active">Home</a>
+	</div>
+	<div class="smallscreennav" id="smallscreennav">
+		<ul class="list">
+			<li id="homepage"><a href="index.html" class="active">Home</a></li>
+			<li><a href="entrees.html">Entrees</a></li>
+			<li><a href="appetizers.html">Appetizers</a></li>
+			<li><a href="desserts.html">Desserts</a></li>
+			<li><a href="salads.html">Salads, Soups & Sides</a></li>
+			<li><a href="drinks.html">Drinks</a></li>
+			<li><a href="fam_favs.html">Family Favorites</a></li>
+		</ul>
+	</div>
+	<!-- Page Body -->
+	<div id="title">
+		Atten Family Recipes
+	</div>
+	<div id="images">
+		<div class="container">
+			<a href="entrees.html"><img src=".\Images\shrimpentree_pop.jpg" class="linkimage"></a>
+			<a href="entrees.html"><div class="overlay">Entrees</div></a>
+		</div>
+		<div class="container">
+			<a href="appetizers.html"><img src=".\Images\appetizer.jpg" class="linkimage"></a>
+			<a href="appetizers.html"><div class="overlay">Appetizers</div></a>
+		</div>
+		<div class="container">
+			<a href="desserts.html"><img src=".\Images\dessert.jpg" class="linkimage"></a>
+			<a href="desserts.html"><div class="overlay">Desserts</div></a>
+		</div>
+		<div class="container">
+			<a href="salads.html"><img src=".\Images\salad.jpg" class="linkimage"></a>
+			<a href="salads.html"><div class="overlay">Salads, Soups, Sides</div></a>
+		</div>
+		<div class="container">
+			<a href="drinks.html"><img src=".\Images\drinks.jpg" class="linkimage"></a>
+			<a href="drinks.html"><div class="overlay">Drinks</div></a>
+		</div>
+		<div class="container">
+			<a href="fam_favs.html"><img src=".\Images\favorite.jpg" class="linkimage"></a>
+			<a href="fam_favs.html"><div class="overlay">Family Favorites</div></a>
+		</div>
+	</div>
+</body>
+
+<script>
+	function displayMenu() {
+		var x = document.getElementById("smallscreennav");
+	    if (x.style.display === "block") {
+	        x.style.display = "none";
+	    } else {
+	        x.style.display = "block";
+	    }
+	    
+	    var y = document.getElementById("smallscreenactive")
+	    	    if (y.style.display === "none") {
+	    	y.style.display = "block";
+	    } else {
+	    	y.style.display = "none";
+	    }
+	}
+</script>
+</html>

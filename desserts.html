@@ -1,0 +1,233 @@
+<html>
+<head>
+	<title>Desserts</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<style type="text/css">
+	.sidenav {
+		font-family: 'Josefin Sans', sans-serif;
+		font-size: 18.8px;
+		text-align: center;
+		position: absolute;
+		top: 46.8px;
+		width: 15%;
+		height: 100%;
+		padding: 0;
+		margin: 0;
+		background-color: #f9f9f9;
+	}
+	.side-list {
+		padding: 0;
+		list-style-type: none;
+		text-decoration: none;
+	}
+	.side-list-item {
+		padding: 8px 0 8px 0;
+		text-decoration: none;
+	}
+	.side-list-item:hover {
+		transition: 0.3s;
+		color: #6699ff;
+		cursor: pointer;
+	}
+	.active {
+		color: #6699ff;
+	}
+	.main-content {
+		font-family: 'Josefin Sans', sans-serif;
+		font-size: 18.8px;
+		position: absolute;
+		left: 15%;
+		top: 46.8px;
+		padding: 0;
+	}
+	.recipe-insert {
+		display: block;
+		text-decoration: none;
+		color: black;
+	}
+	.recipe-image {
+		height: 150px;
+		width: 150px;
+	}
+	.recipe-name {
+		position: relative;
+		top: -100px;
+		left: 200px;
+	}
+	@media screen and (max-width: 1100px) {
+		.sidenav {
+			top: 46.8px;
+			width: 100%;
+			height: auto;
+			font-family: 'Josefin Sans', sans-serif;
+			font-size: 18.8px;
+			text-align: center;
+			position: absolute;
+			padding: 0;
+			margin: 0;
+			background-color: #f9f9f9;
+		}
+		.main-content {
+			position: absolute;
+			left: 5%;
+			top: 328.9px;
+			font-family: 'Josefin Sans', sans-serif;
+			font-size: 18.8px;
+			padding: 0;
+		}
+		.sidenav-lowered {
+			top: 327.6px;
+			width: 100%;
+			height: auto;
+			font-family: 'Josefin Sans', sans-serif;
+			font-size: 18.8px;
+			text-align: center;
+			position: absolute;
+			padding: 0;
+			margin: 0;
+			background-color: #f9f9f9;
+		}
+		.main-content-lowered {
+			font-family: 'Josefin Sans', sans-serif;
+			font-size: 18.8px;
+			position: absolute;
+			left: 5%;
+			top: 656.5px;
+			padding: 0;
+		}
+	}
+	</style>
+</head>
+
+<body class="body" onload="showRecipes(active)">
+	<!-- Menu Icon -->
+	<div class="menuIconContainer" onclick="displayMenu()">
+		<div class="bar1"></div>
+		<div class="bar2"></div>
+		<div class="bar3"></div>
+	</div>
+	<!-- Navigation Bar -->
+	<div class="navbar">
+		<ul class="list">
+			<li id="homepage"><a href="index.html">Home</a></li>
+			<li><a href="entrees.html">Entrees</a></li>
+			<li><a href="appetizers.html">Appetizers</a></li>
+			<li><a href="desserts.html" class="active">Desserts</a></li>
+			<li><a href="salads.html">Salads, Soups & Sides</a></li>
+			<li><a href="drinks.html">Drinks</a></li>
+			<li><a href="fam_favs.html">Family Favorites</a></li>
+			<li class="search">
+				<input type="text" placeholder="Search">
+				<button type="submit"><i class="fa fa-search"></i></button>
+			</li>
+		</ul>
+	</div>
+	<div class="smallscreenactive" id="smallscreenactive">
+		<a href="index.html" class="active">Desserts</a>
+	</div>
+	<div class="smallscreennav" id="smallscreennav">
+		<ul class="list">
+			<li id="homepage"><a href="index.html">Home</a></li>
+			<li><a href="entrees.html">Entrees</a></li>
+			<li><a href="appetizers.html">Appetizers</a></li>
+			<li><a href="desserts.html" class="active">Desserts</a></li>
+			<li><a href="salads.html">Salads, Soups & Sides</a></li>
+			<li><a href="drinks.html">Drinks</a></li>
+			<li><a href="fam_favs.html">Family Favorites</a></li>
+		</ul>
+	</div>
+	<!-- Page Body -->
+	<div class="sidenav" id="sidenav">
+		<ul class="side-list">
+			<li class="side-list-item active" onclick="updateListing(this)" id="active-recipe">Cookies</li>
+			<li class="side-list-item" onclick="updateListing(this)">Cakes</li>
+			<li class="side-list-item" onclick="updateListing(this)">Breads</li>
+			<li class="side-list-item" onclick="updateListing(this)">Muffins</li>
+			<li class="side-list-item" onclick="updateListing(this)">Pies</li>
+			<li class="side-list-item" onclick="updateListing(this)">Miscellaneous</li>
+		</ul>
+	</div>
+	<div class="main-content" id="main-content">
+		<div id="recipe-info">
+		</div>
+	</div>
+</body>
+
+<script>
+	//arrays :(
+	var cakes = ["Angel Food Cake with Strawberry Frosting.jpg", "Angel Torte.png", "Apple Sauce Date Nut Spice Cake.png", "Brown Cake.jpg", "Bundt Poppy Seed Cake.png", "Carrot Cake with Creamy Coconut Frosting.jpg", "Carrot Cake.png", "Chocolate Angel Food Cake.jpg", "Chocolate Cheese Cake.png", "Chocolate Cherry Cake.png", "Coffe Cake 2.png", "Coffee Cake.jpg", "Coffee Cake.png", "Date & Nuts Cake.jpg", "Duncan Hines Cake.png", "Eclair Cake.png", "French Pastry Cake.pdf", "French Pastry Cake.png", "Fruit Cake.png", "Ice Box Cake.jpg", "Kates Apple Cake.png", "Lemon Cake.png", "Lemon Poppy Seed Snack Cake.png", "Lemon Sherbet Cake.png", "Lemonade Cake.jpg", "Lemonade Cake.png", "Marys Chocolate Fudge Cake.png", "Milnut Cheese Cake.png", "Molten Chocolate Cake.pdf", "Mrs W's Coffee Cake.jpg", "New York Cheese Cake.jpg", "Peach Cake.png", "Pound Cake.png", "Pumpkin Cheesecake Squares.png", "Sour Cream Banana Cake.jpg", "Sour Cream Cake.png", "Sour Cream Pound Cake.pdf", "Sour Cream Pound Cake.png", "Sour Cream Pumpkin Coffeecake.png", "Strawberry Ice Box Cake.png", "Yellow Cake.png"];
+	var cookies = ["Brickle Drop Cookies.jpg", "Brownie Cookies.png", "Cappuccino Crescents.png", "Cheese Cookies.jpg", "Chewy Oatmeal Cookies.jpg", "Chocolate Print Cookies.jpg", "Chocolate Shot Cookies.png", "Crisp Butter Cookies.png", "Dotties Mexican Wedding Cookies.jpg", "Elizabeth Cookies.png", "Fancy Filbert Cookies.png", "Irresistable Peanut Butter Cookies.png", "Nieman Marcus Cookies.png", "No Bake Cookies.png", "NYT Choc Chip Cookies.pdf", "Oatmeal Cocoa Chippers.png", "Oatmeal Toffee Cookies.png", "Original Nestle Toll House Chocolate Chip Cookies.png", "Peanut Butter Cookies.png", "Pecan Cookies.png", "Potato Chip Cookies 2.png", "Potato Chip Cookies.png", "Powdered Easy Sugar Cookies.png", "Shortbread Cookies.png", "Sonia Cookies.png", "Sour Cream Cookies.jpg", "Spritz Cookies.png", "Sugar Cookies.png", "Ultimate Chocolate Chip Cookies.jpg", "Ultimate Double Chocolate Chip Cookies.jpg", "Ultimate Sugar Cookies.jpg", "White Chocolate Chunk Cookies with Macadamia Nuts.png"];
+	var breads = ["Banana Bread.png", "Bountiful Beer Bread Mix Suggestions.jpg", "Caribbean Beach Bread Mix Suggestions.jpg", "Chocolate Truffle Loaf with Raspberry Sauce.jpg", "Christmas Ornament Bread Dough.jpg", "Corn Meal Bread.png", "Cranberry Pumpkin Bread.png", "French Toast Casserole.pdf", "Herb Bread.png", "Libbys Pumpkin Roll.jpg", "Pumpkin Date Nut Bread.jpg", "Zucchini Bread.png"];
+	var muffins = ["Blueberry Pumpkin Muffins.jpg", "Bran Cereal Muffins.png", "The Original All-Bran Muffins.pdf"];
+	var pies = ["Apple Pie.png", "Dutch Apple Pie.jpg", "French Apple Pie.png", "French Silk Chocolate Pie.png", "Ice Cream Pie.png", "Lemony Cheese Pie.png", "Maid o Mist Pie.png", "Oreo Pie Crust.jpg", "Oreo Pie.png", "Pumpkin Pie.jpg"];
+	var miscellaneous = ["Apple Crisp.jpg", "Apple Sauce.png", "Apple Strudel.png", "Apricot Fluff.jpg", "Banana Gingerbread Bars.png", "Blanc Mange.png", "Butter Cream.jpg", "Cheese Bars.png", "Chocolate Chips Delights.png", "Chocolate Fondue.jpg", "Chocolate Mint Bars.png", "Chocolate Mousse.png", "Chocolate Snowballs (Fudge Balls).png", "Creme de Menthe Brownies.jpg", "Easter Nests.png", "Four Layer Dessert.png", "Hot Fudge Sauce.png", "Kahlua Cocoa Balls.png", "Kim Wicks Caramel Corn.pdf", "Lemon Bars - Square.png", "Lemon Bars Deluxe.pdf", "Mounds Bars.png", "Mrs. Stickneys Fudge.png", "Oatmeal Chocolate Sandwiches.jpg", "Orange Blossom.jpg", "Orange Milk Sherbet.jpg", "Peach Cobbler.png", "Peanut Butter Fudge.jpg", "Peanut Butter n Jelly Bars.png", "Pecan Pie Bars.png", "Pecan Topped Biscuits.png", "Pistaccio Instant Pudding.png", "Pretzel Jello.jpg", "Pumpkin Cheesecake Squares.png", "Rice Pudding.png", "Royal Icing.png", "Spice Bars.png", "Spiced Nuts.jpg", "Spinach Jello.png", "Strawberry Brownie Torte.png", "Tiramisu.jpg", "Toll House Marble Squares.png", "Turtle Brownies.jpg", "Unnamed.png"];
+	var string_options =["cakes", "cookies", "breads", "muffins", "pies", "miscellaneous"]
+	var options = [cakes, cookies, breads, muffins, pies, miscellaneous];
+
+	//set default active array
+	var active = "cookies";
+
+	function updateListing(x) {
+		active = x.innerText.toLowerCase();
+		document.getElementById("active-recipe").classList.remove("active");
+		document.getElementById("active-recipe").removeAttribute("id");
+		x.setAttribute("id", "active-recipe");
+		document.getElementById("active-recipe").classList.add("active");
+		document.getElementById("sidenav").classList.remove("sidenav");
+		document.getElementById("sidenav").classList.add("sidenav");
+		showRecipes(active);
+	}
+
+	function showRecipes(input) {
+		for (var j = 0; j < string_options.length; j++) {
+			if (input == string_options[j]) {
+				folder = input;
+				input = options[j];
+			}
+		}
+
+		document.getElementById("recipe-info").innerHTML = "";
+		for (var i = 0; i < input.length; i++) {
+			var source = ".\\Recipes\\Desserts\\" + folder + "\\" + input[i];
+			document.getElementById("recipe-info").innerHTML += "<a href='" + source + "' target='_blank' class='recipe-insert'>" +
+			"<img src='" + source + "' class='recipe-image'>" +
+			"<p class='recipe-name'>" + input[i].substring(0, input[i].length - 4) + "</p>"
+			+ "</a>";
+		}
+	}
+
+	function displayMenu() {
+		var x = document.getElementById("smallscreennav");
+	    if (x.style.display === "block") {
+	        x.style.display = "none";
+	        document.getElementById("sidenav").classList.remove("sidenav");
+	        document.getElementById("sidenav").classList.add("sidenav-lowered");
+	        document.getElementById("main-content").classList.remove("main-content");
+	        document.getElementById("main-content").classList.add("main-content-lowered");
+	    } else {
+	        x.style.display = "block";
+	        document.getElementById("sidenav").classList.remove("sidenav-lowered");
+	        document.getElementById("sidenav").classList.add("sidenav");
+	        document.getElementById("main-content").classList.remove("main-content-lowered");
+	        document.getElementById("main-content").classList.add("main-content");
+	       
+	    }
+	    
+	    var y = document.getElementById("smallscreenactive")
+	   	if (y.style.display === "none") {
+	    	y.style.display = "block";
+			document.getElementById("sidenav").classList.remove("sidenav-lowered");
+	        document.getElementById("sidenav").classList.add("sidenav");
+	        document.getElementById("main-content").classList.remove("main-content-lowered");
+	        document.getElementById("main-content").classList.add("main-content");	    } else {
+	    	y.style.display = "none";
+	    	document.getElementById("sidenav").classList.remove("sidenav");
+	        document.getElementById("sidenav").classList.add("sidenav-lowered");
+	        document.getElementById("main-content").classList.remove("main-content");
+	        document.getElementById("main-content").classList.add("main-content-lowered");
+	    }
+	}
+</script>
+</html>
